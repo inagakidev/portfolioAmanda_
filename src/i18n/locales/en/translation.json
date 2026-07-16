@@ -1,0 +1,219 @@
+{
+  "languageSwitcher": {
+    "label": "Language switcher"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "services": "Services",
+    "experiences": "Experience",
+    "skills": "Skills",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "header": {
+    "logoAria": "Amanda Inagaki, go to the top",
+    "navAria": "Page sections",
+    "logoText": "AMANDA DEV",
+    "themeToggleAriaDark": "Switch to light theme",
+    "themeToggleAriaLight": "Switch to dark theme",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "hero": {
+    "badge": "Portfolio · Front-End Developer",
+    "titlePrimary": "Amanda",
+    "titleAccent": "Inagaki",
+    "subtitle": "Landing pages, websites and web interfaces designed with impeccable aesthetics, SEO and real performance.",
+    "primaryCta": "See projects",
+    "secondaryCta": "Get in touch",
+    "socials": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "availability": "Available for new projects"
+  },
+  "about": {
+    "status": {
+      "locationLabel": "Location",
+      "location": "Caçapava, SP, Brazil",
+      "availabilityLabel": "Status",
+      "availability": "Available",
+      "stackLabel": "Stack",
+      "stack": "React / Node / PostgreSQL"
+    },
+    "eyebrow": "About me",
+    "age": "Hello",
+    "meta": {
+      "city": "Caçapava, SP",
+      "school": "Uniasselvi",
+      "course": "Information Systems · 2nd semester"
+    },
+    "summaryLabel": "Professional summary",
+    "summaryText": "Front-end developer in training, combining hands-on experience in client service and content production within the real estate market with a focus on building functional, accessible, and thoughtfully designed interfaces. Currently studying Information Systems, I apply that learning to real projects — including this portfolio and a website for small business owners.",
+    "imageAlt": "Amanda Inagaki",
+    "traits": {
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "I work well with cross-functional teams and deliver solutions with a focus on clarity."
+      },
+      "communication": {
+        "title": "Communication",
+        "description": "I turn complex ideas into simple, objective experiences."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "I look for modern, scalable solutions with attention to detail."
+      },
+      "organization": {
+        "title": "Organization",
+        "description": "I structure projects from planning to delivery without losing sight of what matters."
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Selected projects",
+    "headingPrimary": "Cases built with",
+    "headingMuted": "precision and purpose.",
+    "count": "· {{count}} projects",
+    "actions": {
+      "viewProject": "View project",
+      "viewCode": "Code"
+    },
+    "items": {
+      "infoproduto": {
+        "category": "Landing page",
+        "badge": "Lighthouse 98/100",
+        "title": "Info-product launch",
+        "description": "High-conversion landing page focused on technical SEO, Core Web Vitals and result-driven copy."
+      },
+      "microempresa": {
+        "category": "Institutional website",
+        "badge": "+120% leads",
+        "title": "Local micro-business",
+        "description": "Multi-section website for a small business, with customized visual identity and a contact form."
+      },
+      "dashboard": {
+        "category": "Web app",
+        "badge": "Real time",
+        "title": "Indicators dashboard",
+        "description": "Dashboard with dynamic charts and period filters, consuming a custom Node.js API."
+      },
+      "portfolioCliente": {
+        "category": "Portfolio",
+        "badge": "Design system",
+        "title": "Portfolio for a photographer",
+        "description": "Responsive gallery with optimized image loading and light/dark theme."
+      }
+    }
+  },
+  "experiences": {
+  "eyebrow": "Experience",
+  "headingPrimary": "A journey of",
+  "headingMuted": "finding my path.",
+  "currentLabel": "Present",
+  "timeline": {
+    "ads": {
+      "period": "2025",
+      "title": "First steps into tech",
+      "description": "I entered the tech industry through paid traffic and digital marketing — my first real contact with the tech world.",
+      "tags": ["Ads", "Digital Marketing", "Paid Traffic"]
+    },
+    "exploration": {
+      "period": "2025",
+      "title": "Searching for my path",
+      "description": "I explored different areas within tech, feeling a bit lost, until I understood where I truly wanted to build my career.",
+      "tags": ["Exploration", "Self-discovery", "New technologies"]
+    },
+    "frontend": {
+      "period": "2026",
+      "title": "Found my place in front-end",
+      "description": "I found my place in front-end development. Today I build interfaces with React and Next.js, while studying Node.js and backend to become a fullstack developer.",
+      "tags": ["React", "Next.js", "Node.js (learning)"]
+    }
+  }
+},
+  "process": {
+    "eyebrow": "Process",
+    "headingPrimary": "Clear method,",
+    "headingMuted": "from briefing to deploy.",
+    "steps": {
+      "discovery": {
+        "title": "Discovery",
+        "description": "I understand the business, audience and concrete goals of the project."
+      },
+      "strategy": {
+        "title": "Strategy & scope",
+        "description": "We define scope, deadlines and success metrics before any line of code."
+      },
+      "design": {
+        "title": "Design & prototyping",
+        "description": "Visual identity, wireframes and approved prototypes before implementation."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Semantic, responsive and optimized code, with continuous review cycles."
+      },
+      "launch": {
+        "title": "Launch & evolution",
+        "description": "Deploy, performance monitoring and iterative improvements."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "headingPrimary": "Let’s build",
+    "headingAccent": "something memorable?",
+    "description": "I am available for new projects involving landing pages, institutional websites and collaborations. Reach out and I’ll tell you how I can help.",
+    "channels": {
+      "email": {
+        "label": "Email",
+        "value": "amanda@example.com"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Caçapava · SP · Brazil"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/amanda"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/amanda"
+      }
+    },
+    "footer": "© 2026 · Amanda Inagaki · All rights reserved"
+  },
+  "form": {
+    "eyebrow": "Send a message",
+    "name": {
+      "label": "Name",
+      "placeholder": "Your name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "you@company.com"
+    },
+    "message": {
+      "label": "About the project",
+      "placeholder": "Tell me a bit about what you need..."
+    },
+    "company": "Company",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "success": "Message sent — I’ll reply soon.",
+    "error": "Something went wrong. Please try again in a moment.",
+    "hint": "Reply within 24h",
+    "validation": {
+      "nameRequired": "Tell me your name so we can speak properly.",
+      "nameShort": "That name looks incomplete.",
+      "emailRequired": "Leave an email so I can reply.",
+      "emailInvalid": "That email does not look valid.",
+      "messageRequired": "Tell me a bit about the project.",
+      "messageShort": "Please add a little more detail (min. 10 characters)."
+    }
+  }
+}

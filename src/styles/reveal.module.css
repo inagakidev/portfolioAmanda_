@@ -1,0 +1,89 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealActive {
+  opacity: 1;
+  transform: translateY(0);
+  /* will-change some naturalmente aqui: essa classe substitui .reveal,
+     então a camada GPU criada para a transição é liberada depois dela. */
+}
+
+.revealChild {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Assim que o pai ganha .revealActive, esta regra tem especificidade maior
+   e "zera" o will-change — a camada GPU criada pra animação é liberada
+   em vez de ficar presa pro resto da vida da página. */
+.revealActive .revealChild {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+.delay1 {
+  transition-delay: 80ms;
+}
+
+.delay2 {
+  transition-delay: 140ms;
+}
+
+.delay3 {
+  transition-delay: 200ms;
+}
+
+.delay4 {
+  transition-delay: 260ms;
+}
+
+.delay5 {
+  transition-delay: 320ms;
+}
+
+.delay6 {
+  transition-delay: 380ms;
+}
+
+.delay7 {
+  transition-delay: 440ms;
+}
+
+.delay8 {
+  transition-delay: 500ms;
+}
+
+@media (max-width: 720px) {
+  .reveal,
+  .revealChild {
+    /* transições mais curtas no mobile: menos tempo com camadas ativas
+       simultaneamente, scroll sente mais responsivo */
+    transition-duration: 0.4s;
+  }
+
+  .delay1 { transition-delay: 50ms; }
+  .delay2 { transition-delay: 90ms; }
+  .delay3 { transition-delay: 130ms; }
+  .delay4 { transition-delay: 170ms; }
+  .delay5 { transition-delay: 210ms; }
+  .delay6 { transition-delay: 250ms; }
+  .delay7 { transition-delay: 290ms; }
+  .delay8 { transition-delay: 330ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .revealChild {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

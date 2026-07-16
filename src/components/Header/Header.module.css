@@ -1,0 +1,244 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-primary) 92%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: var(--transition-theme);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.logoDivider {
+  color: var(--text-muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.navItemActive {
+  background: rgba(155, 93, 229, 0.14);
+}
+
+.navItem:hover,
+.navItem:focus-visible {
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.navIndex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.navLabel {
+  position: absolute;
+  top: 100%;
+  margin-top: 6px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.navItem:hover,
+.navItem:focus-visible {
+  background: var(--surface);
+}
+
+.navItem:hover .navIndex,
+.navItem:focus-visible .navIndex {
+  color: var(--accent);
+}
+
+.navItem:hover .navLabel,
+.navItem:focus-visible .navLabel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 14px;
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.menuToggle:hover,
+.menuToggle:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.menuToggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  position: relative;
+}
+
+.menuToggle span + span {
+  margin-top: 4px;
+}
+
+.navOpen {
+  position: fixed;
+  inset: 76px 18px auto 18px;
+  z-index: 18;
+  display: flex;
+  padding: 18px;
+  flex-direction: column;
+  gap: 12px;
+  width: calc(100% - 36px);
+  border-radius: 24px;
+  background: rgba(10, 14, 22, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+}
+
+.themeToggle {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.themeToggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(14deg);
+}
+
+@media (max-width: 900px) {
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .navItem {
+    width: 100%;
+    padding: 12px 14px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .navLabel {
+    position: static;
+    margin-top: 0;
+    transform: none;
+    opacity: 1;
+    white-space: normal;
+    font-size: 13px;
+  }
+
+  .navIndex {
+    margin-bottom: 6px;
+  }
+
+  .navOpen {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 14px 16px;
+  }
+
+  .logoText {
+    font-size: 10px;
+  }
+}

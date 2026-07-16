@@ -1,0 +1,245 @@
+.contato {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 96px 28px 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.channelRow {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.channelRow .channel {
+  flex: 1;
+  min-width: 0;
+}
+
+.copyButton {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.copyButton:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+  color: var(--accent);
+}
+
+.copyButtonActive {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.copyTooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.copyButton:hover .copyTooltip,
+.copyButtonActive .copyTooltip {
+  opacity: 1;
+}
+
+.eyebrowIndex {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.eyebrowLine {
+  width: 40px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.eyebrowLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---------- Coluna esquerda ---------- */
+
+.heading {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.12;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+}
+
+.headingPrimary,
+.headingAccent {
+  display: block;
+}
+
+.headingPrimary {
+  color: var(--text-primary);
+}
+
+.headingAccent {
+  color: var(--accent);
+}
+
+.description {
+  margin: 0 0 36px;
+  max-width: 440px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.channels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+a.channel {
+  cursor: pointer;
+}
+
+.channel:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+.channelIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.channelText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.channelLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.channelValue {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.channelArrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.channel:hover .channelArrow {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  margin-top: 88px;
+  padding: 28px 0 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footerText {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 940px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 520px) {
+  .contato {
+    padding: 64px 18px 0;
+  }
+
+  .footer {
+    margin-top: 56px;
+  }
+}

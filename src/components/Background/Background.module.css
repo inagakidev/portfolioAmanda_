@@ -1,0 +1,67 @@
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint size;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+}
+
+.nebula {
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  top: -8%;
+  left: 55%;
+  filter: blur(60px);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, transparent 70%);
+}
+
+.grid {
+  position: absolute;
+  inset: -1px;
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 38%, black 45%, transparent 92%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 38%, black 45%, transparent 92%);
+  opacity: 0.9;
+}
+
+.corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  opacity: 0.55;
+}
+
+.cornerTopRight {
+  top: 84px;
+  right: 28px;
+  border-top: 1px solid var(--border-strong);
+  border-right: 1px solid var(--border-strong);
+}
+
+.cornerBottomLeft {
+  bottom: 28px;
+  left: 20px;
+  border-bottom: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border-strong);
+}
+
+@media (max-width: 768px) {
+  .nebula {
+    filter: blur(36px);
+    opacity: 0.7;
+  }
+
+  .grid {
+    opacity: 0.7;
+    background-size: 32px 32px;
+  }
+}

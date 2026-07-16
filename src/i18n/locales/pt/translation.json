@@ -1,0 +1,219 @@
+{
+  "languageSwitcher": {
+    "label": "Seletor de idioma"
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "services": "Serviços",
+    "experiences": "Experiências",
+    "skills": "Competências",
+    "process": "Processo",
+    "contact": "Contato"
+  },
+  "header": {
+    "logoAria": "Amanda Inagaki, ir para o início",
+    "navAria": "Seções da página",
+    "logoText": "AMANDA DEV",
+    "themeToggleAriaDark": "Ativar tema claro",
+    "themeToggleAriaLight": "Ativar tema escuro",
+    "openMenu": "Abrir menu de navegação",
+    "closeMenu": "Fechar menu de navegação"
+  },
+  "hero": {
+    "badge": "Portfólio · Desenvolvedora Front-End",
+    "titlePrimary": "Amanda",
+    "titleAccent": "Inagaki",
+    "subtitle": "Landing pages, sites e interfaces web, projetadas com design impecável, SEO e performance de verdade.",
+    "primaryCta": "Ver projetos",
+    "secondaryCta": "Fale comigo",
+    "socials": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "E-mail"
+    },
+    "availability": "Disponível para novos projetos"
+  },
+  "about": {
+    "status": {
+      "locationLabel": "Local",
+      "location": "Caçapava, SP, BR",
+      "availabilityLabel": "Status",
+      "availability": "Disponível",
+      "stackLabel": "Stack",
+      "stack": "React / Node / PostgreSQL"
+    },
+    "eyebrow": "Sobre mim",
+    "age": "Olá",
+    "meta": {
+      "city": "Caçapava, SP",
+      "school": "Uniasselvi",
+      "course": "Sistemas de Informação · 2º semestre"
+    },
+    "summaryLabel": "Resumo profissional",
+    "summaryText": "Desenvolvedora front-end em formação, unindo experiência prática em atendimento e produção de conteúdo no mercado imobiliário à construção de interfaces funcionais, acessíveis e visualmente cuidadas. Atualmente cursando Sistemas de Informação, aplico esse aprendizado em projetos reais como este portfólio e site para micro-empreendedores",
+    "imageAlt": "Amanda Inagaki",
+    "traits": {
+      "collaboration": {
+        "title": "Colaboração",
+        "description": "Trabalho bem com times multidisciplinares e entrego soluções com foco em clareza."
+      },
+      "communication": {
+        "title": "Comunicação",
+        "description": "Transformo ideias complexas em experiências simples e objetivas."
+      },
+      "innovation": {
+        "title": "Inovação",
+        "description": "Procuro soluções modernas, escaláveis e com atenção aos detalhes."
+      },
+      "organization": {
+        "title": "Organização",
+        "description": "Estruturo projetos do zero, do planejamento à entrega, sem perder o foco no essencial."
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Projetos selecionados",
+    "headingPrimary": "Cases construídos com",
+    "headingMuted": "precisão e propósito.",
+    "count": "· {{count}} projetos",
+    "actions": {
+      "viewProject": "Ver projeto",
+      "viewCode": "Código"
+    },
+    "items": {
+      "infoproduto": {
+        "category": "Landing page",
+        "badge": "Lighthouse 98/100",
+        "title": "Lançamento de infoproduto",
+        "description": "Landing page de alta conversão com foco em SEO técnico, Core Web Vitals e copy orientada a resultado."
+      },
+      "microempresa": {
+        "category": "Site institucional",
+        "badge": "+120% de leads",
+        "title": "Microempresa local",
+        "description": "Site multi-seção para pequeno negócio, com identidade visual personalizada e formulário de contato."
+      },
+      "dashboard": {
+        "category": "Aplicação web",
+        "badge": "Tempo real",
+        "title": "Painel de indicadores",
+        "description": "Dashboard com gráficos dinâmicos e filtros por período, consumindo API própria em Node.js."
+      },
+      "portfolioCliente": {
+        "category": "Portfólio",
+        "badge": "Design system",
+        "title": "Portfólio para fotógrafa",
+        "description": "Galeria responsiva com carregamento otimizado de imagens e tema claro/escuro."
+      }
+    }
+  },
+  "experiences": {
+  "eyebrow": "Experiências",
+  "headingPrimary": "Uma trajetória de",
+  "headingMuted": "me encontrar no caminho.",
+  "currentLabel": "Atual",
+  "timeline": {
+    "ads": {
+      "period": "2025",
+      "title": "Primeiros passos em tecnologia",
+      "description": "Entrei na área de TI atuando com tráfego pago e marketing digital — meu primeiro contato real com o universo tech.",
+      "tags": ["Ads", "Marketing digital", "Tráfego pago"]
+    },
+    "exploration": {
+      "period": "2025",
+      "title": "Em busca do meu caminho",
+      "description": "Explorei diferentes áreas dentro de TI, meio perdida, até entender onde eu realmente queria construir minha carreira.",
+      "tags": ["Exploração", "Autoconhecimento", "Novas tecnologias"]
+    },
+    "frontend": {
+      "period": "2026",
+      "title": "Me encontrei no front-end",
+      "description": "Encontrei no front-end o meu lugar. Hoje construo interfaces com React e Next.js, enquanto estudo Node.js e back-end para me tornar fullstack.",
+      "tags": ["React", "Next.js", "Node.js (em estudo)"]
+    }
+  }
+},
+  "process": {
+    "eyebrow": "Processo",
+    "headingPrimary": "Método claro,",
+    "headingMuted": "do briefing ao deploy.",
+    "steps": {
+      "discovery": {
+        "title": "Descoberta",
+        "description": "Entendo o negócio, o público e os objetivos concretos do projeto."
+      },
+      "strategy": {
+        "title": "Estratégia & escopo",
+        "description": "Definimos escopo, prazos e métricas de sucesso antes de qualquer linha de código."
+      },
+      "design": {
+        "title": "Design & prototipagem",
+        "description": "Identidade visual, wireframes e protótipos aprovados antes da implementação."
+      },
+      "development": {
+        "title": "Desenvolvimento",
+        "description": "Código semântico, responsivo e otimizado, com revisões contínuas."
+      },
+      "launch": {
+        "title": "Publicação & evolução",
+        "description": "Deploy, monitoramento de performance e melhorias iterativas."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contato",
+    "headingPrimary": "Vamos construir",
+    "headingAccent": "algo memorável?",
+    "description": "Estou disponível para novos projetos de landing pages, sites institucionais e colaborações. Me chame e conto como posso ajudar.",
+    "channels": {
+      "email": {
+        "label": "E-mail",
+        "value": "amanda@exemplo.com"
+      },
+      "location": {
+        "label": "Localização",
+        "value": "Caçapava · SP · Brasil"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/amanda"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/amanda"
+      }
+    },
+    "footer": "© 2026 · Amanda Inagaki · Todos os direitos reservados"
+  },
+  "form": {
+    "eyebrow": "Enviar mensagem",
+    "name": {
+      "label": "Nome",
+      "placeholder": "Seu nome"
+    },
+    "email": {
+      "label": "E-mail",
+      "placeholder": "voce@empresa.com"
+    },
+    "message": {
+      "label": "Sobre o projeto",
+      "placeholder": "Conte um pouco sobre o que você precisa..."
+    },
+    "company": "Empresa",
+    "submit": "Enviar mensagem",
+    "submitting": "Enviando...",
+    "success": "Mensagem enviada — te respondo em breve.",
+    "error": "Algo deu errado. Tenta de novo em instantes.",
+    "hint": "Resposta em até 24h",
+    "validation": {
+      "nameRequired": "Conta seu nome pra gente se falar direito.",
+      "nameShort": "Esse nome parece incompleto.",
+      "emailRequired": "Deixa um e-mail pra eu poder responder.",
+      "emailInvalid": "Esse e-mail não parece válido.",
+      "messageRequired": "Conta um pouco sobre o projeto.",
+      "messageShort": "Dá um pouco mais de detalhe (mín. 10 caracteres)."
+    }
+  }
+}

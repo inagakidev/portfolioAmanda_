@@ -1,0 +1,420 @@
+.sobre {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 96px 28px 120px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 56px;
+}
+
+.eyebrowIndex {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.eyebrowLine {
+  width: 40px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.eyebrowLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---------- Retrato ---------- */
+
+.portraitWrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.portraitWrap::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.portrait {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  width: var(--size);
+  height: var(--size);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+}
+
+.portraitInner {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, var(--bg-elevated), var(--bg-primary) 78%);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 8px 32px -8px var(--accent-glow),
+    inset 0 0 24px var(--accent-glow-soft);
+}
+
+.portraitInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 999px;
+  filter: contrast(1.05) saturate(1.08);
+}
+
+.portraitLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+.tag {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.ringSweep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  transform: translate(-50%, -50%) translateZ(0);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    var(--accent) 344deg,
+    transparent 360deg
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 1.5px),
+    #000 calc(100% - 1.5px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 1.5px),
+    #000 calc(100% - 1.5px)
+  );
+  opacity: 0.55;
+  will-change: transform;
+  animation: spinCW 16s linear infinite;
+  animation-play-state: var(--anim-state, running);
+  pointer-events: none;
+}
+
+.ringSweep.inner {
+  animation-name: spinCCW;
+  animation-duration: 11s;
+  opacity: 0.35;
+}
+
+.satelliteOrbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  transform: translate(-50%, -50%) translateZ(0);
+  border-radius: 50%;
+  will-change: transform;
+  animation: spinCW 16s linear infinite;
+  animation-play-state: var(--anim-state, running);
+  pointer-events: none;
+}
+
+.satellite {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px 2px var(--accent-soft, rgba(139, 127, 209, 0.55));
+  transform: translateX(-50%);
+}
+
+@keyframes spinCW {
+  to {
+    transform: translate(-50%, -50%) translateZ(0) rotate(360deg);
+  }
+}
+
+@keyframes spinCCW {
+  to {
+    transform: translate(-50%, -50%) translateZ(0) rotate(-360deg);
+  }
+}
+
+/* Mobile: o conic-gradient + mask animado é o ponto mais pesado.
+   Remove o sweep e mantém só o satélite (transform puro, muito mais barato). */
+@media (max-width: 768px) {
+  .ringSweep {
+    display: none;
+  }
+
+  .satellite {
+    box-shadow: 0 0 4px 1px var(--accent-soft, rgba(139, 127, 209, 0.5));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ringSweep,
+  .satelliteOrbit {
+    animation: none;
+  }
+}
+
+/* ---------- Info ---------- */
+
+.info {
+  min-width: 0;
+}
+
+.name {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  color: var(--text-primary);
+}
+
+/* ---------- Painel de status (HUD) ---------- */
+
+.statusPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 28px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+}
+
+.statusKey {
+  min-width: 88px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+}
+
+.statusValue {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent-strong);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 6px 1px rgba(61, 220, 132, 0.6);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDot {
+    animation: none;
+  }
+}
+
+.metaList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 0 0 36px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.metaIcon {
+  display: inline-flex;
+  color: var(--accent);
+}
+
+.summary {
+  margin-bottom: 32px;
+}
+
+.summaryLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.summaryDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.summaryText {
+  margin: 0;
+  max-width: 560px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Traits ---------- */
+
+.traits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.traitCard {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.traitCard:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+.traitIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 14px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.traitTitle {
+  margin: 0 0 6px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.traitDescription {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .portraitWrap {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .sobre {
+    padding: 64px 18px 80px;
+  }
+
+  .traits {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    width: 220px;
+    height: 220px;
+  }
+}

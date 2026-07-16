@@ -1,0 +1,190 @@
+.experiencias {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 96px 28px 120px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.eyebrowIndex {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.itemCurrent .title {
+  color: var(--accent-strong);
+}
+
+.markerCurrent {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eyebrowLine {
+  width: 40px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.eyebrowLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.heading {
+  margin: 0 0 64px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+}
+
+.headingPrimary,
+.headingMuted {
+  display: block;
+}
+
+.headingPrimary {
+  color: var(--text-primary);
+}
+
+.headingMuted {
+  color: var(--text-muted);
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 760px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 24px;
+}
+
+.markerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--accent);
+}
+
+.connector {
+  flex: 1;
+  width: 1px;
+  min-height: 24px;
+  margin: 6px 0;
+  background: linear-gradient(var(--border-strong), var(--border));
+}
+
+.details {
+  padding-bottom: 44px;
+}
+
+.period {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.description {
+  margin: 0 0 18px;
+  max-width: 560px;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 560px) {
+  .experiencias {
+    padding: 64px 18px 80px;
+  }
+
+  .item {
+    grid-template-columns: 34px 1fr;
+    column-gap: 16px;
+  }
+
+  .marker {
+    width: 34px;
+    height: 34px;
+  }
+
+  .details {
+    padding-bottom: 34px;
+  }
+}
