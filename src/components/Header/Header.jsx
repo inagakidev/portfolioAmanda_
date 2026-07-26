@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FiHome, FiUser, FiFolder, FiBriefcase, FiSettings, FiMail } from 'react-icons/fi';
 import { useTheme } from '../../context/ThemeContext';
 import useScrollReveal from '../../hooks/useScrollReveal';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
@@ -15,7 +16,18 @@ const NAV_ITEMS = [
   { id: 'contact', href: '#contato', labelKey: 'nav.contact' },
 ];
 
+const NAV_ICONS = {
+  home: FiHome,
+  about: FiUser,
+  projects: FiFolder,
+  experiences: FiBriefcase,
+  process: FiSettings,
+  contact: FiMail,
+};
+
 const SECTION_IDS = ['inicio', 'sobre', 'projetos', 'experiencias', 'processo', 'contato'];
+
+const MOBILE_BREAKPOINT = 900;
 
 export default function Header() {
   const { isDark, toggleTheme } = useTheme();
@@ -23,50 +35,93 @@ export default function Header() {
   const [containerRef, isVisible] = useScrollReveal({ once: true });
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const menuToggleRef = useRef(null);
+  const firstNavLinkRef = useRef(null);
+  const didMountRef = useRef(false);
 
   const navItems = useMemo(
     () =>
       NAV_ITEMS.map((item, index) => ({
         ...item,
         label: t(item.labelKey),
-        index: `${String(index + 1).padStart(2, '0')}`,
       })),
     [t]
   );
 
+  const toggleMenu = () => setMenuOpen((current) => !current);
+  const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
-    if (!sections.length) {
-      return undefined;
-    }
+    if (sections.length === 0) return undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleEntry = entries
+        const visible = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-        if (visibleEntry) {
-          setActiveSection(visibleEntry.target.id);
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
         }
       },
-      {
-        rootMargin: '-30% 0px -55% 0px',
-        threshold: [0.2, 0.5, 0.75],
-      }
+      { rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
 
-  const toggleMenu = () => setMenuOpen((current) => !current);
-  const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') closeMenu();
+    };
+    const handleResize = () => {
+      if (window.innerWidth > MOBILE_BREAKPOINT) closeMenu();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    if (menuOpen) {
+      firstNavLinkRef.current?.focus();
+    } else {
+      menuToggleRef.current?.focus();
+    }
+  }, [menuOpen]);
 
   return (
     <header
       ref={containerRef}
-      className={`${styles.header} ${isVisible ? revealStyles.revealActive : revealStyles.reveal}`}
+      className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''} ${
+        isVisible ? revealStyles.revealActive : revealStyles.reveal
+      }`}
     >
       <a
         className={`${styles.logo} ${revealStyles.revealChild} ${revealStyles.delay1}`}
@@ -78,8 +133,11 @@ export default function Header() {
       </a>
 
       <button
+        ref={menuToggleRef}
         type="button"
-        className={`${styles.menuToggle} ${revealStyles.revealChild} ${revealStyles.delay2}`}
+        className={`${styles.menuToggle} ${menuOpen ? styles.menuToggleOpen : ''} ${
+          revealStyles.revealChild
+        } ${revealStyles.delay2}`}
         aria-label={menuOpen ? t('header.closeMenu') : t('header.openMenu')}
         aria-expanded={menuOpen}
         aria-controls="primary-navigation"
@@ -90,25 +148,34 @@ export default function Header() {
         <span aria-hidden="true" />
       </button>
 
+      {menuOpen && (
+        <div className={styles.overlay} onClick={closeMenu} aria-hidden="true" />
+      )}
+
       <nav
         id="primary-navigation"
         className={`${styles.nav} ${menuOpen ? styles.navOpen : ''} ${revealStyles.revealChild} ${revealStyles.delay3}`}
         aria-label={t('header.navAria')}
       >
         <ul className={styles.navList}>
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <a
-                href={item.href}
-                onClick={closeMenu}
-                className={`${styles.navItem} ${activeSection === item.href.slice(1) ? styles.navItemActive : ''}`}
-                aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
-              >
-                <span className={styles.navIndex}>{item.index}</span>
-                <span className={styles.navLabel}>{item.label}</span>
-              </a>
-            </li>
-          ))}
+          {navItems.map((item, itemIndex) => {
+            const Icon = NAV_ICONS[item.id];
+            return (
+              <li key={item.id}>
+                <a
+                  ref={itemIndex === 0 ? firstNavLinkRef : undefined}
+                  href={item.href}
+                  onClick={closeMenu}
+                  aria-label={item.label}
+                  className={`${styles.navItem} ${activeSection === item.href.slice(1) ? styles.navItemActive : ''}`}
+                  aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
+                >
+                  {Icon && <Icon className={styles.navIcon} aria-hidden="true" />}
+                  <span className={styles.navLabel}>{item.label}</span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
 
@@ -123,7 +190,7 @@ export default function Header() {
               ? t('header.themeToggleAriaDark')
               : t('header.themeToggleAriaLight')
           }
-          aria-pressed={!isDark}
+          aria-pressed={isDark}
         >
           {isDark ? (
             <svg
@@ -133,6 +200,7 @@ export default function Header() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.8"
+              aria-hidden="true"
             >
               <circle cx="12" cy="12" r="4" />
               <path
@@ -148,6 +216,7 @@ export default function Header() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.8"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"

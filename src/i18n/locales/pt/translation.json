@@ -118,7 +118,7 @@
     "ads": {
       "period": "2025",
       "title": "Primeiros passos em tecnologia",
-      "description": "Entrei na área de TI atuando com tráfego pago e marketing digital — meu primeiro contato real com o universo tech.",
+      "description": "Entrei na área de TI atuando com tráfego pago e marketing digital, meu primeiro contato real com o universo tech.",
       "tags": ["Ads", "Marketing digital", "Tráfego pago"]
     },
     "exploration": {
@@ -204,7 +204,7 @@
     "company": "Empresa",
     "submit": "Enviar mensagem",
     "submitting": "Enviando...",
-    "success": "Mensagem enviada — te respondo em breve.",
+    "success": "Mensagem enviada, te respondo em breve.",
     "error": "Algo deu errado. Tenta de novo em instantes.",
     "hint": "Resposta em até 24h",
     "validation": {

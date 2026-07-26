@@ -81,7 +81,8 @@ export function useContactForm({ onSubmit } = {}) {
         setValues(INITIAL_VALUES);
         setTouched({});
         setErrors({});
-      } catch {
+      } catch (err) {
+        console.error('Falha ao enviar contato:', err);
         setStatus('error');
       }
     },

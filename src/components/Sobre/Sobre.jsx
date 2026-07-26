@@ -5,118 +5,32 @@ import useScrollReveal from "../../hooks/useScrollReveal";
 import revealStyles from "../../styles/reveal.module.css";
 import amandaPerfil from "../../assets/amandaPerfil.png";
 
+import { FaMapMarkerAlt, FaGraduationCap, FaBriefcase, FaWhatsapp, FaLinkedin, FaFileDownload, FaUsers, FaComments, FaLightbulb, FaLayerGroup } from "react-icons/fa";
 
+
+
+
+const META_ICONS = {
+  pin: FaMapMarkerAlt,
+  school: FaGraduationCap,
+  briefcase: FaBriefcase,
+};
+
+const TRAIT_ICONS = {
+  users: FaUsers,
+  message: FaComments,
+  bulb: FaLightbulb,
+  layout: FaLayerGroup,
+};
 
 function MetaIcon({ icon }) {
-  const common = {
-    width: 14,
-    height: 14,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.8,
-  };
-  if (icon === "pin") {
-    return (
-      <svg {...common}>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z"
-        />
-        <circle cx="12" cy="9.5" r="2.3" />
-      </svg>
-    );
-  }
-  if (icon === "school") {
-    return (
-      <svg {...common}>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3 10.5 12 6l9 4.5-9 4.5-9-4.5Z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M7 12.5V17c0 1.1 2.24 2 5 2s5-.9 5-2v-4.5"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg {...common}>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H4V5.5Z"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H20V5.5Z"
-      />
-    </svg>
-  );
+  const Icon = META_ICONS[icon] || FaBriefcase;
+  return <Icon size={14} />;
 }
 
 function TraitIcon({ icon }) {
-  const common = {
-    width: 18,
-    height: 18,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.8,
-  };
-  if (icon === "users") {
-    return (
-      <svg {...common}>
-        <circle cx="9" cy="8" r="3" />
-        <path strokeLinecap="round" d="M3 20c0-3 2.7-5 6-5s6 2 6 5" />
-        <path
-          strokeLinecap="round"
-          d="M16 4.5a3 3 0 0 1 0 5.9M20.5 20c0-2.6-2-4.4-4.5-4.9"
-        />
-      </svg>
-    );
-  }
-  if (icon === "message") {
-    return (
-      <svg {...common}>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M4 5.5h16v11H9.5L5 20v-3.5H4v-11Z"
-        />
-      </svg>
-    );
-  }
-  if (icon === "bulb") {
-    return (
-      <svg {...common}>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9 18h6M10 21h4M8 14a5 5 0 1 1 8 0c-.9 1-1.4 1.7-1.4 3H9.4c0-1.3-.5-2-1.4-3Z"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg {...common}>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="m2 9 10-4.5L22 9l-10 4.5L2 9Z"
-      />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5"
-      />
-    </svg>
-  );
+  const Icon = TRAIT_ICONS[icon] || FaLayerGroup;
+  return <Icon size={18} />;
 }
 
 export default function About() {
@@ -211,6 +125,34 @@ export default function About() {
             </div>
             <span className={styles.tag}>{t("about.age")}</span>
           </div>
+          <div className={styles.socialLinks}>
+            <a
+              href="/src/assets/cv-amanda-inagaki.pdf"
+              download
+              className={styles.iconButton}
+              aria-label="Baixar currículo"
+            >
+              <FaFileDownload size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/amanda-inagaki"
+              target="blank"
+              rel="noopener noreferrer"
+              className={styles.iconButton}
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={18} />
+            </a>
+            <a
+              href="https://wa.me/5512997936774"
+              target="blank"
+              rel="noopener noreferrer"
+              className={styles.iconButton}
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp size={18} />
+            </a>
+          </div>
         </div>
 
         <div
@@ -223,42 +165,11 @@ export default function About() {
           </h2>
 
           <div
-            className={`${styles.statusPanel} ${revealStyles.revealChild} ${revealStyles.delay5}`}
-          >
-            <div className={styles.statusRow}>
-              <span className={styles.statusKey}>
-                {t("about.status.locationLabel")}
-              </span>
-              <span className={styles.statusValue}>
-                {t("about.status.location")}
-              </span>
-            </div>
-            <div className={styles.statusRow}>
-              <span className={styles.statusKey}>
-                {t("about.status.availabilityLabel")}
-              </span>
-              <span className={styles.statusValue}>
-                <span className={styles.statusDot} aria-hidden="true" />
-                {t("about.status.availability")}
-              </span>
-            </div>
-            <div className={styles.statusRow}>
-              <span className={styles.statusKey}>
-                {t("about.status.stackLabel")}
-              </span>
-              <span className={styles.statusValue}>
-                {t("about.status.stack")}
-              </span>
-            </div>
-          </div>
-
-          <div
             className={`${styles.summary} ${revealStyles.revealChild} ${revealStyles.delay7}`}
           >
             <p
               className={`${styles.summaryLabel} ${revealStyles.revealChild} ${revealStyles.delay7}`}
             >
-              <span className={styles.summaryDot} aria-hidden="true" />
               {t("about.summaryLabel")}
             </p>
             <p

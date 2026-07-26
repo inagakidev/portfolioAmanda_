@@ -59,7 +59,7 @@ export default function Processo() {
             {steps.map((step, index) => (
               <li key={step.number} className={`${styles.step} ${revealStyles.revealChild} ${revealStyles['delay' + (index + 3)]}`}>
                 <p className={styles.stepIndex}>
-                  <span aria-hidden="true">·</span> {step.number}
+                 {step.number}
                 </p>
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepDescription}>{step.description}</p>

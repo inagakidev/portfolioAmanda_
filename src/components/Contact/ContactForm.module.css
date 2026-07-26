@@ -17,12 +17,16 @@
   color: var(--accent);
 }
 
+
 .eyebrowDot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
 }
+
+
 
 .form {
   display: flex;
@@ -162,4 +166,9 @@
   letter-spacing: normal;
   font-family: var(--font-body);
   font-size: 0.82rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }

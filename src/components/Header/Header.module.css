@@ -7,12 +7,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 18px 28px;
+  padding: 12px 28px;
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg-primary) 92%, transparent);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-  transition: var(--transition-theme);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: var(--transition-theme), box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.headerScrolled {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  background: color-mix(in srgb, var(--bg-primary) 97%, transparent);
 }
 
 .logo {
@@ -81,48 +87,41 @@
   background: rgba(155, 93, 229, 0.14);
 }
 
+.navItemActive .navIcon,
+.navItemActive .navIndex,
+.navItemActive .navLabel {
+  color: var(--accent);
+}
+
 .navItem:hover,
 .navItem:focus-visible {
   background: var(--surface);
   transform: translateY(-1px);
 }
 
-.navIndex {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+.navIcon {
+  display: none;
+  flex-shrink: 0;
+  color: var(--text-secondary);
   transition: color 0.2s ease;
 }
 
 .navLabel {
-  position: absolute;
-  top: 100%;
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 10px;
   letter-spacing: 0.04em;
   color: var(--text-secondary);
   white-space: nowrap;
-  opacity: 0;
-  transform: translateY(-2px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  pointer-events: none;
-}
-
-.navItem:hover,
-.navItem:focus-visible {
-  background: var(--surface);
+  transition: color 0.2s ease;
 }
 
 .navItem:hover .navIndex,
-.navItem:focus-visible .navIndex {
-  color: var(--accent);
-}
-
+.navItem:focus-visible .navIndex,
+.navItem:hover .navIcon,
+.navItem:focus-visible .navIcon,
 .navItem:hover .navLabel,
 .navItem:focus-visible .navLabel {
-  opacity: 1;
-  transform: translateY(0);
+  color: var(--accent);
 }
 
 .actions {
@@ -135,13 +134,14 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border: 1px solid var(--border);
   background: var(--surface);
-  border-radius: 14px;
+  border-radius: 999px;
   color: var(--text-secondary);
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  z-index: 19;
 }
 
 .menuToggle:hover,
@@ -158,10 +158,43 @@
   background: currentColor;
   border-radius: 999px;
   position: relative;
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
 .menuToggle span + span {
   margin-top: 4px;
+}
+
+.menuToggleOpen span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menuToggleOpen span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menuToggleOpen span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 17;
+  background: rgba(8, 10, 16, 0.45);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  animation: overlayFadeIn 0.2s ease;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .navOpen {
@@ -179,6 +212,18 @@
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+  animation: panelSlideIn 0.22s ease;
+}
+
+@keyframes panelSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .themeToggle {
@@ -210,22 +255,26 @@
 
   .navItem {
     width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
     padding: 12px 14px;
     justify-content: flex-start;
     text-align: left;
   }
 
-  .navLabel {
-    position: static;
-    margin-top: 0;
-    transform: none;
-    opacity: 1;
-    white-space: normal;
-    font-size: 13px;
+  .navIndex {
+    display: none;
   }
 
-  .navIndex {
-    margin-bottom: 6px;
+  .navIcon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+  }
+
+  .navLabel {
+    display: none;
   }
 
   .navOpen {
@@ -240,5 +289,17 @@
 
   .logoText {
     font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .navItem,
+  .themeToggle,
+  .menuToggle span,
+  .overlay,
+  .navOpen {
+    transition: none !important;
+    animation: none !important;
   }
 }

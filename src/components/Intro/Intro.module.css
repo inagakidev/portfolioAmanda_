@@ -1,0 +1,194 @@
+:root {
+  --intro-bg: #08070d;
+  --intro-bg2: #0c0a15;
+  --intro-purple: #a855f7;
+  --intro-purple-soft: rgba(168,85,247,0.14);
+  --intro-purple-border: rgba(168,85,247,0.35);
+  --intro-white: #f5f3ff;
+  --intro-muted: #9c98b3;
+}
+
+.introSection {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--intro-bg);
+}
+
+.starsCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.nebula {
+  position: absolute;
+  inset: -20%;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 32% at 25% 30%, rgba(168,85,247,0.20), transparent 60%),
+    radial-gradient(ellipse 38% 46% at 78% 68%, rgba(168,85,247,0.14), transparent 60%),
+    radial-gradient(ellipse 50% 36% at 60% 18%, rgba(120,50,220,0.16), transparent 65%);
+  filter: blur(6px);
+  animation: drift 44s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(8,7,13,0.65) 85%, var(--intro-bg) 100%);
+}
+
+.portalWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.portal {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  transform: scale(1);
+  box-shadow:
+    0 0 60px 8px rgba(168,85,247,0.45),
+    0 0 130px 34px rgba(168,85,247,0.18);
+}
+
+.portalCore {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #2a0f52, #a855f7, #d6a6ff, #6d28d9, #2a0f52);
+  animation: spin 16s linear infinite;
+  filter: blur(1px);
+}
+
+.portalCore::after {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #150a28 0%, #08070d 55%, #08070d 100%);
+}
+
+.portalRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(168,85,247,0.35);
+}
+
+.revealDisc {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  border-radius: 50%;
+  background: var(--intro-bg);
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.portalText {
+  position: relative;
+  z-index: 6;
+  text-align: center;
+  pointer-events: none;
+}
+
+.portalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--intro-purple);
+  background: var(--intro-purple-soft);
+  border: 1px solid var(--intro-purple-border);
+  border-radius: 999px;
+  padding: 7px 16px;
+  margin-bottom: 28px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--intro-purple);
+}
+
+.portalTitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6.5vw, 4.4rem);
+  line-height: 1.05;
+  color: var(--intro-white);
+  margin: 0;
+}
+
+.portalSub {
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--intro-muted);
+  text-transform: uppercase;
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--intro-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(var(--intro-purple), transparent);
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-2%,1.5%) scale(1.04); }
+  100% { transform: translate(1.5%,-2%) scale(1.02); }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes pulse-line { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .nebula, .portalCore, .scrollLine { animation: none; }
+}

@@ -52,7 +52,7 @@
       "course": "Information Systems · 2nd semester"
     },
     "summaryLabel": "Professional summary",
-    "summaryText": "Front-end developer in training, combining hands-on experience in client service and content production within the real estate market with a focus on building functional, accessible, and thoughtfully designed interfaces. Currently studying Information Systems, I apply that learning to real projects — including this portfolio and a website for small business owners.",
+    "summaryText": "Front-end developer in training, combining hands-on experience in client service and content production within the real estate market with a focus on building functional, accessible, and thoughtfully designed interfaces. Currently studying Information Systems, I apply that learning to real projects, including this portfolio and a website for small business owners.",
     "imageAlt": "Amanda Inagaki",
     "traits": {
       "collaboration": {
@@ -118,7 +118,7 @@
     "ads": {
       "period": "2025",
       "title": "First steps into tech",
-      "description": "I entered the tech industry through paid traffic and digital marketing — my first real contact with the tech world.",
+      "description": "I entered the tech industry through paid traffic and digital marketing, my first real contact with the tech world.",
       "tags": ["Ads", "Digital Marketing", "Paid Traffic"]
     },
     "exploration": {
@@ -204,7 +204,7 @@
     "company": "Company",
     "submit": "Send message",
     "submitting": "Sending...",
-    "success": "Message sent — I’ll reply soon.",
+    "success": "Message sent, I’ll reply soon.",
     "error": "Something went wrong. Please try again in a moment.",
     "hint": "Reply within 24h",
     "validation": {
